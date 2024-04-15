@@ -35,7 +35,7 @@ const RouteMapComponent = ({ selectedAirportto, selectedAirportfrom, startLocati
           {endLocation && <Marker position={endLocation}><Popup>{selectedAirportto.name}</Popup></Marker>}
         </MapContainer>
       </div>
-      <div className="border border-gray-300 rounded-lg p-4 m-4 inline-block">
+      <div className="border border-gray-300 rounded-lg p-4 m-4 inline-block absolute top-1/3 left-3/4">
         <h2 className="text-xl font-semibold mb-2">Distance</h2>
         <p className="text-lg font-bold">{distance.toFixed(2)} km</p>
       </div>

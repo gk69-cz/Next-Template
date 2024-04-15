@@ -1,18 +1,25 @@
+import { Heading } from '@/components/component/heading'
+import { BookOpenText } from 'lucide-react'
 import React from 'react'
 
 const About = () => {
     return (
         <>
+        <Heading
+        title="About"
+        description='WHO, WHY, HOW'
+        icon={BookOpenText}
+        iconColor='text-blue-500'
+        bgColor='bg-blue-500/10'
+      />
 
-            <div className="container mx-auto py-12 px-4">
-                <h1 className="text-3xl font-semibold mb-6">About Us</h1>
-
+            <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-2 gap-8">
                     <div>
                         <h2 className="text-xl font-semibold mb-4">Our Mission</h2>
-                        <p className="text-gray-700 mb-6">At [Your Web Application Name], our mission is to [describe your primary goal or objective]. We believe in [core values or principles that guide your work]. With a focus on [specific aspect of your service], we aim to [impact or benefit your users].</p>
+                        <p className="text-gray-700 mb-6">In Airwise, this website is part of a larger portfolio showcasing my own work. It doesn't rely on APIs; instead, it utilizes JSON data generated from Python scripts. As one of 10 websites in the portfolio, its purpose is to highlight my projects and expertise.</p>
 
-                        <h2 className="text-xl font-semibold mb-4">What We Offer</h2>
+                        <h2 className="text-xl font-semibold mb-4">What this site Offer</h2>
                         <ul className="list-disc pl-5 text-gray-700">
                             <li>Real-Time Flight Tracking: Track flight paths and get live updates on flight locations.</li>
                             <li>Interactive Map Integration: View flights on an interactive map, pinpointing their current locations.</li>
@@ -41,9 +48,9 @@ const About = () => {
                 </div>
 
                 <div className="mt-12 text-center">
-                    <h2 className="text-xl font-semibold mb-4">Contact Us</h2>
-                    <p className="text-gray-700 mb-2">We'd love to hear from you! Whether you have questions, feedback, or just want to say hello, don't hesitate to reach out to us.</p>
-                    <p className="text-gray-700">Email: [Your contact email] | Phone: [Your contact phone number] | Address: [Your office address, if applicable]</p>
+                    <h2 className="text-xl font-semibold mb-4">Hire Me</h2>
+                    <p className="text-gray-700 mb-2">Ready to bring your project to life? Let's discuss how I can help you achieve your goals.</p>
+                    <p className="text-gray-700">Email: [Your email address] | Phone: [Your phone number] | Portfolio: [Link to your portfolio or website]</p>
                 </div>
             </div>
 

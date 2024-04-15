@@ -27,7 +27,7 @@ export default function RootLayout({
           <Sidebar />
         </div>
         <div className='md:pl-72'>
-          <div className='flex items-center p-4'>
+          <div className='flex items-center p-4 bg-svg'>
           <NavigationMobile />
           {children}
           </div>

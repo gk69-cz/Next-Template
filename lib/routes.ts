@@ -1,42 +1,45 @@
-import { Home, LayoutDashboard, Plane } from "lucide-react";
+import { Home, BookOpenText, Search,Ticket,Map,PlaneLanding } from "lucide-react";
+
 
 const routes = [
     {
         label: 'Home',
         icon: Home,
         href: '/home',
-        color: 'text-violet-500'
+        color: '#4CAF50'
     },
     {
         label: 'Tracker',
-        icon: Plane,
+        icon: Search,
         href: '/tracker',
-        color: 'text-violet-500'
+        color: '#4CAF50'
     },
     {
-        label: 'Book',
-        icon: LayoutDashboard,
-        href: '/book',
-        color: 'text-blue-500'
+        label: 'Best Offers',
+        icon: Ticket,
+        href: '/bestoffer',
+        color: '#4CAF50'
     },
     {
-        label: 'Routetwo',
-        icon: LayoutDashboard,
-        href: '/routetwo',
-        color: 'text-green-500'
+        label: 'Routes',
+        icon: Map,
+        href: '/routes',
+        color: '#4CAF50'
     },
     {
-        label: 'Routethree',
-        icon: LayoutDashboard,
-        href: '/routethree',
-        color: 'text-red-500'
+        label: 'Airport',
+        icon: PlaneLanding,
+        href: '/airports',
+        color: '#4CAF50'
     },
+    
     {
-        label: 'Routefour',
-        icon: LayoutDashboard,
-        href: '/routefour',
-        color: 'text-blue-500'
+        label: 'About',
+        icon: BookOpenText,
+        href: '/about',
+        color: '#4CAF50'
     },
+    
 
 
 ]

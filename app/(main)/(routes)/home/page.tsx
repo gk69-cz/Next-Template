@@ -43,7 +43,7 @@ const tools = [
     bgcolor:'bg-blue-500/10',
   },
 ]
-const home = () => {
+const Home = () => {
   const router = useRouter()
   
   return (<>
@@ -56,7 +56,7 @@ const home = () => {
         Airwise
         </h2>
         <p className='text-muted-foreground font-light text-sm md:text-lg text-center'>
-        "Track the skies with Airwise: your ultimate destination for real-time flight information and aviation insights."
+        Track the skies with Airwise: your ultimate destination for real-time flight information and aviation insights.
         </p>
       </div>
       <div className='px-4 md:px-20 lg:px-32 space-y-4'>
@@ -85,4 +85,4 @@ const home = () => {
   )
 }
 
-export default home
+export default Home

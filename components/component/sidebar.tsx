@@ -6,7 +6,7 @@ import routes from '@/lib/routes'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 
-const sidebar = () => {
+const Sidebar = () => {
     const pathname = usePathname();
   return (
     <div className='space-y-4 py-4 flex flex-col h-full bg-[#3F72AF] text-white '>
@@ -42,4 +42,4 @@ const sidebar = () => {
   )
 }
 
-export default sidebar
+export default Sidebar

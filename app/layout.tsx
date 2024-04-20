@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/component/navigation";
-import Footer from "@/components/component/Footer";
 import Sidebar from "@/components/component/sidebar";
 import NavigationMobile from "@/components/component/navigation";
-import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next Template",
-  description: "Description Of The ",
+  title: "Airwise",
+  description: "Your destination for seamless travel experiences",
 };
 
 export default function RootLayout({

@@ -20,9 +20,11 @@ const NavigationMobile = () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <Button variant='ghost' size='icon' className='md:hidden'>
-          <Menu />
-        </Button>
+        <div> {/* Replace <button> with <div> */}
+          <Button variant='ghost' size='icon' className='md:hidden absolute top-6'>
+            <Menu />
+          </Button>
+        </div> {/* End of replacement */}
       </SheetTrigger>
       <SheetContent side='left' className='p-0'>
         <Sidebar/>

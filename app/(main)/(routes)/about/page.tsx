@@ -17,7 +17,7 @@ const About = () => {
                 <div className="grid md:grid-cols-2 gap-8">
                     <div>
                         <h2 className="text-xl font-semibold mb-4">Our Mission</h2>
-                        <p className="text-gray-700 mb-6">In Airwise, this website is part of a larger portfolio showcasing my own work. It doesn't rely on APIs; instead, it utilizes JSON data generated from Python scripts. As one of 10 websites in the portfolio, its purpose is to highlight my projects and expertise.</p>
+                        <p className="text-gray-700 mb-6">In Airwise, this website is part of a larger portfolio showcasing my own work. It does not rely on APIs; instead, it utilizes JSON data generated from Python scripts. As one of 10 websites in the portfolio, its purpose is to highlight my projects and expertise.</p>
 
                         <h2 className="text-xl font-semibold mb-4">What this site Offer</h2>
                         <ul className="list-disc pl-5 text-gray-700">
@@ -49,7 +49,7 @@ const About = () => {
 
                 <div className="mt-12 text-center">
                     <h2 className="text-xl font-semibold mb-4">Hire Me</h2>
-                    <p className="text-gray-700 mb-2">Ready to bring your project to life? Let's discuss how I can help you achieve your goals.</p>
+                    <p className="text-gray-700 mb-2">Ready to bring your project to life? Let us discuss how I can help you achieve your goals.</p>
                     <p className="text-gray-700">Email: [Your email address] | Phone: [Your phone number] | Portfolio: [Link to your portfolio or website]</p>
                 </div>
             </div>

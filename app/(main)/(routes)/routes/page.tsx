@@ -44,19 +44,17 @@ const Routes = () => {
   
   const [result, setResult] = useState(false);
 
-  const handleAirportSelectTo = (airportto:Airport): Airport => {
-    setSelectedAirportto(airportto);
+  const handleAirportSelectTo = (airport:Airport):Airport => {
+    setSelectedAirportto(airport);
     settoselected(true)
-    settocoordinates([airportto.latitude,airportto.longitude]);
-    return airportto;
-    // Do something with the selected airport value
+    settocoordinates([airport.latitude,airport.longitude]);
+    return airport;
   };
-  const handleAirportSelectFrom = (airportfrom :Airport) => {
-    setSelectedAirportfrom(airportfrom);
+  const handleAirportSelectFrom = (airport :Airport): Airport => {
+    setSelectedAirportfrom(airport);
     setfromselected(true)
-    setforcoordinates([airportfrom.latitude,airportfrom.longitude]);
-    return airportfrom;
-    // Do something with the selected airport value
+    setforcoordinates([airport.latitude,airport.longitude]);
+    return airport;
   };
   const resultSelection = () => {
     setResult(true);
@@ -74,15 +72,15 @@ const Routes = () => {
       <div className='rounded-lg border w-full p-4 grid grid-cols-2 gap-2 px-3 md:px-6 focus-within:shadow-sm '>
          <Combobox title="Start Airport" onSelect={handleAirportSelectTo} />
          <Combobox title="End Destination" onSelect={handleAirportSelectFrom} />
-         <Button className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!toselected || !fromselected} onClick={() => resultSelection()}>
+         <Button className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!toselected || !fromselected} onClick={resultSelection}>
           Get Route
         </Button>
       </div>
       <br />
-      {result === null && <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-1 gap-2">  Please do search for an airport
-      </div>
-      }
-      {result &&  <RouteMapComponent selectedAirportto={selectedAirportto} selectedAirportfrom={selectedAirportfrom} startLocation={tocoordinates} endLocation={forcoordinates} />}
+      {/* {!result ?
+      <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-1 gap-2">  Please do search for an airport
+      </div> : <RouteMapComponent selectedAirportto={selectedAirportto} selectedAirportfrom={selectedAirportfrom} startLocation={tocoordinates} endLocation={forcoordinates} />
+      } */}
     </>
   )
 }

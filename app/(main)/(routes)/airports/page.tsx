@@ -63,11 +63,8 @@ const Airport = () => {
       </div>
       <br />
       <br />
-      {!result && <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-1 gap-2">  Please do search for an airport
-      </div>
-
-      }
-      {result && selectedAirport && selectedAirport.name && <Location coordinates={coordinates} airport={selectedAirport} />}
+      {/* {!result ? <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-1 gap-2">  Please do search for an airport
+      </div>:<Location coordinates={coordinates} airport={selectedAirport}/>} */}
     </>
   )
 }

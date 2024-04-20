@@ -14,9 +14,9 @@ const MapComponent: React.FC<MapComponentProps> = ({ coordinates }) => {
     delete (L.Icon.Default.prototype as any)._getIconUrl;
     L.Icon.Default.imagePath='public/'
     L.Icon.Default.mergeOptions({
-      iconRetinaUrl: '/map_red.png',
-      iconUrl: '/map_red.png',
-      shadowUrl: '/map_red.png'
+      iconRetinaUrl: '/mapPin.png',
+      iconUrl: '/marker-icon.png',
+      shadowUrl: '/shadow.png'
     });
   }, []);
 

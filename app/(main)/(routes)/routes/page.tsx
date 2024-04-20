@@ -73,7 +73,7 @@ const Routes = () => {
         bgColor='bg-blue-500/10'
       />
       
-      <div className='rounded-lg border w-full p-4 grid grid-cols-2 gap-2 px-3 md:px-6 focus-within:shadow-sm '>
+      <div className='rounded-lg border w-full p-4 grid grid-cols-1 gap-1 px-3 md:px-6 focus-within:shadow-sm '>
          <Combobox title="Start Airport" onSelect={handleAirportSelectTo} />
          <Combobox title="End Destination" onSelect={handleAirportSelectFrom} />
          <Button className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!toselected || !fromselected} onClick={resultSelection}>

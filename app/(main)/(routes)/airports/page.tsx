@@ -59,14 +59,14 @@ const Airport = () => {
 
           <Combobox title="Start Airport" onSelect={handleAirportSelect} />
         </div>
-        <Button className="mt-10 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!isLoading} onClick={() => setResult(true)}>
+        <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!isLoading} onClick={() => setResult(true)}>
           Search
         </Button>
       </div>
       <br />
       <br />
       {!result ? <div className="flex justify-center items-center">
-        <p className=" p-8 rounded-lg">
+        <p className="p-8 rounded-lg">
           please do search
         </p>
       </div> : <Location coordinates={coordinates} airport={selectedAirport} />}

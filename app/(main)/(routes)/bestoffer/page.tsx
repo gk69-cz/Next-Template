@@ -109,8 +109,8 @@ const Bestofferes = () => {
       
         <Combobox title="Please Provide To" onSelect={handleAirportSelectFrom} />
     
-        <div className="relative grid grid-cols-2">
-          <div>
+        <div className="relative grid grid-cols-1 md:grid md:grid-cols-2">
+         
                <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -145,9 +145,6 @@ const Bestofferes = () => {
                 </div>
               </PopoverContent>
                </Popover>
-           
-          </div>
-       
                 <Button disabled={!isMobloading} onClick={fetchData} className='relative w-[165px]'>
                   Check
                 </Button>
@@ -213,7 +210,7 @@ const Bestofferes = () => {
       </div>
       <br />
       <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2">
-       {loading? <Loader/>:<p>Result</p>}
+       {loading? <Loader/>:<p>Test Api credentials have been expired</p> }
        </div>
        
 

@@ -70,7 +70,7 @@ const Routeone = () => {
         bgColor='bg-blue-500/10'
       />
       <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-1 sm:grid sm:grid-cols-4 sm:gap-4 ">
          
         <Input type="text" placeholder="Flight Number" onChange={e => {setFlightName(e.currentTarget.value)}} />
         
@@ -121,7 +121,7 @@ const Routeone = () => {
       </div>
       <br />
       <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm">
-         {loading ? <Loading/> : 'Fetched Data'}
+         {loading ? <Loading/> : 'Test Api credentials have been expired '}
       </div>
     </div>
   )

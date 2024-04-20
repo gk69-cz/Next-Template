@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import L from 'leaflet';
+import React from 'react'
 import 'leaflet/dist/leaflet.css';
 import MapComponent from './mapcontainer';
 import Link from 'next/link';
@@ -36,11 +35,11 @@ bgcolor:'bg-blue-500/10'}
         <div className="relative">
           <MapComponent coordinates={props.coordinates} />
         </div>
-        <div className="border border-gray-300 rounded-lg p-4 inline-block absolute top-1/3 left-3/4" style={{ height: '420px' }}>
+        <div className="mt-7 border border-gray-300 rounded-lg p-4 inline-block absolute top-1/3 left-3/4" style={{ height: '420px' }}>
           {/* <div className="border border-gray-300 rounded-lg p-4 m-4 shadow-lg"> */}
           <h2 className="text-lg mb-2">{props.airport.name}</h2>
           <p className="text-md mb-4">In the diverse and culturally rich nation of {props.airport.country}, where vibrant cityscapes blend with serene countryside, lies {props.airport.name}, a bustling hub of travel and adventure.This airport offers travelers a gateway to the world. It is {props.airport.altitude} meters above sea level, passengers embark on journeys filled with anticipation and wonder, leaving behind the familiar and venturing into the boundless skies</p>
-          <div className="flex items-center mb-4">
+          <div className="mt-[-10] flex items-center mb-4">
           <Link href={googleMapsLink} rel="noopener noreferrer" target="_blank">
           <div className='item-center gap-x-4 grid grid-cols-2 gap-2'>
               <div className={cn("p-2 w-fit rounded-md")}>
@@ -50,12 +49,9 @@ bgcolor:'bg-blue-500/10'}
                   {map.label}
               </div>
               </div>
-              </Link>
-        
+              </Link>      
           </div>
-
-        </div>
-      
+        </div>   
     </div> 
     </>
   )

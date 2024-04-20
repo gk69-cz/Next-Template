@@ -1,10 +1,14 @@
 "use client"
+import dynamic from 'next/dynamic'
 import Combobox from '@/components/component/combobox'
 import Heading from '@/components/component/heading'
-import RouteMapComponent from '@/components/component/routemapcontainer'
+// import RouteMapComponent from '@/components/component/routemapcontainer'
 import { Button } from '@/components/ui/button'
 import { Map } from 'lucide-react'
 import React, { useState } from 'react'
+const RouteMapComponent = dynamic(() => import('@/components/component/routemapcontainer'), {
+  ssr: false,
+});
 interface Airport {
   name: string;
   city: string;
@@ -77,10 +81,13 @@ const Routes = () => {
         </Button>
       </div>
       <br />
-      {/* {!result ?
-      <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-1 gap-2">  Please do search for an airport
-      </div> : <RouteMapComponent selectedAirportto={selectedAirportto} selectedAirportfrom={selectedAirportfrom} startLocation={tocoordinates} endLocation={forcoordinates} />
-      } */}
+     {result ?
+     <RouteMapComponent selectedAirportto={selectedAirportto} selectedAirportfrom={selectedAirportfrom} startLocation={tocoordinates} endLocation={forcoordinates} />
+     : <div className="flex justify-center items-center">
+     <p className=" p-8 rounded-lg">
+       please do search
+     </p>
+   </div>}
     </>
   )
 }

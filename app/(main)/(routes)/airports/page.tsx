@@ -5,8 +5,11 @@ import { PlaneLanding } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { Button } from "@/components/ui/button"
-import Location from "@/components/component/location"
 import Combobox from '@/components/component/combobox';
+import dynamic from 'next/dynamic'
+const Location = dynamic(() => import('@/components/component/location'), {
+  ssr: false,
+});
 
 const Airport = () => {
   interface AirportType {
@@ -34,7 +37,6 @@ const Airport = () => {
 
 
   const handleAirportSelect = (airport: AirportType) => {
-    console.log(airport)
     setSelectedAirport(airport);
     setCoordinates([airport.latitude, airport.longitude]);
     setisLoading(true);
@@ -42,7 +44,7 @@ const Airport = () => {
   };
 
   return (
-    <>if
+    <>
       <Heading
         title="Airport Details"
         description='Explore the World with Our Airport Real-Time Updates on Location, Time, and Weather Conditions!'
@@ -50,21 +52,24 @@ const Airport = () => {
         iconColor='text-blue-500'
         bgColor='bg-blue-500/10'
       />
-  
-    
-         <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2 ">
-      <div className="col-span-12 lg:col-span-10" >
-       
-      <Combobox title="Start Airport" onSelect={handleAirportSelect} />
-      </div>
-      <Button className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!isLoading} onClick={() => setResult(true)}>
-        Search
-      </Button>
+
+
+      <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2 ">
+        <div className="col-span-12 lg:col-span-10" >
+
+          <Combobox title="Start Airport" onSelect={handleAirportSelect} />
+        </div>
+        <Button className="mt-10 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!isLoading} onClick={() => setResult(true)}>
+          Search
+        </Button>
       </div>
       <br />
       <br />
-      {/* {!result ? <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-1 gap-2">  Please do search for an airport
-      </div>:<Location coordinates={coordinates} airport={selectedAirport}/>} */}
+      {!result ? <div className="flex justify-center items-center">
+        <p className=" p-8 rounded-lg">
+          please do search
+        </p>
+      </div> : <Location coordinates={coordinates} airport={selectedAirport} />}
     </>
   )
 }

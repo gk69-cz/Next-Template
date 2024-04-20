@@ -40,7 +40,6 @@ const Routeone = () => {
   const fetchData = async () => {
     const flightname=flightName.split('-');
     const link = url + 'carrierCode='+flightname[0]+'&flightNumber='+flightname[1]+'&scheduledDepartureDate='+moment(date).format('YYYY-MM-DD');
-    console.log(link);
     
     try {
       const response = await fetch(link, {
@@ -122,7 +121,7 @@ const Routeone = () => {
       </div>
       <br />
       <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm">
-         {loading ? <Loading/> : 'Fetch Data'}
+         {loading ? <Loading/> : 'Fetched Data'}
       </div>
     </div>
   )

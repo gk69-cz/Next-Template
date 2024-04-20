@@ -1,12 +1,9 @@
-// components/MapComponent.js
 'use client'
-
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-curve';
 import L from 'leaflet';
-import Link from 'next/link';
 
 interface AirportType {
   name: string;
@@ -34,24 +31,24 @@ const RouteMapComponent: React.FC<RouteMapProps> = ({ selectedAirportto, selecte
       Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
       Math.sin(dLon / 2) * Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c; // Distance in kilometers
+    return R * c;
   }
 
-  function toRadians(degrees:any) {
+  function toRadians(degrees: any) {
     return degrees * Math.PI / 180;
   }
   const distance = calculateDistance(startLocation[0], startLocation[1], endLocation[0], endLocation[1]); // Example coordinates
   useEffect(() => {
     // Ensure Leaflet icons are correctly displayed
     delete (L.Icon.Default.prototype as any)._getIconUrl;
-    L.Icon.Default.imagePath='public/'
+    L.Icon.Default.imagePath = 'public/'
     L.Icon.Default.mergeOptions({
       iconRetinaUrl: '/marker-icon-2x.png',
       iconUrl: '/mapPin.png',
       shadowUrl: '/shadow.png'
     });
   }, []);
- 
+
 
   return (
     <div className="w-full lg:w-3/4 mx-auto float-left">
@@ -61,8 +58,8 @@ const RouteMapComponent: React.FC<RouteMapProps> = ({ selectedAirportto, selecte
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          {startLocation && <Marker position={startLocation}><Popup><Link href={'airports' + '?' + selectedAirportfrom.name}>{selectedAirportfrom.name}</Link></Popup></Marker>}
-          {endLocation && <Marker position={endLocation}><Popup><Link href={'airports' + '?' + selectedAirportfrom.name}>{selectedAirportto.name}</Link></Popup></Marker>}
+          {startLocation && <Marker position={startLocation}><Popup>{selectedAirportfrom.name}</Popup></Marker>}
+          {endLocation && <Marker position={endLocation}><Popup>{selectedAirportto.name}</Popup></Marker>}
         </MapContainer>
       </div>
       <div className="border border-gray-300 rounded-lg p-4 m-4 inline-block absolute top-1/3 left-3/4">

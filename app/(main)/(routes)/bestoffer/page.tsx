@@ -55,7 +55,6 @@ const Bestofferes = () => {
   
 
   const handleAirportSelectTo = (airportTo:Airport): Airport => {
-    console.log(airportTo);
     setCount(count+1)
     setSelectedAirportto(airportTo);
     setDestinationLocationCode(airportTo.code);
@@ -73,7 +72,6 @@ const Bestofferes = () => {
   const url = "https://test.api.amadeus.com/v2/shopping/flight-offers?";
 
   const fetchData = async () => {
-    console.log(adults)
     const link = url + 'originLocationCode='+selectedAirportfrom.code+'&destinationLocationCode='+selectedAirportto.code+'&departureDate='+moment(startdate).format('YYYY-MM-DD')+'&adults='+adults+'&nonStop=false&max=250';
     setLoading(true);
     try {

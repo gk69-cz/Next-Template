@@ -72,20 +72,22 @@ const Routes = () => {
         iconColor='text-blue-500'
         bgColor='bg-blue-500/10'
       />
-      
-      <div className='rounded-lg border w-full p-4 grid grid-cols-1 gap-1 px-3 md:px-6 focus-within:shadow-sm '>
-         <Combobox title="Start Airport" onSelect={handleAirportSelectTo} />
-         <Combobox title="End Destination" onSelect={handleAirportSelectFrom} />
-         <Button className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!toselected || !fromselected} onClick={resultSelection}>
-          Get Route
-        </Button>
+      {/* large */}
+      <div className='rounded-lg border w-full p-4 grid grid-flow-col-3 md:grid-cols-3 md:gap-2 px-3 md:px-6 focus-within:shadow-sm '>
+         <Combobox title="Takeoff" onSelect={handleAirportSelectTo} />
+         <Combobox title="Landing" onSelect={handleAirportSelectFrom} />
+         <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 w-full" disabled={!toselected || !fromselected} onClick={resultSelection}>
+          Show Route
+      </Button>
       </div>
+
+      
       <br />
      {result ?
      <RouteMapComponent selectedAirportto={selectedAirportto} selectedAirportfrom={selectedAirportfrom} startLocation={tocoordinates} endLocation={forcoordinates} />
      : <div className="flex justify-center items-center">
      <p className=" p-8 rounded-lg">
-       please do search
+       PLEASE DO SEARCH
      </p>
    </div>}
     </>

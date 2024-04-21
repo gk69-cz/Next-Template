@@ -114,14 +114,14 @@ const Routeone = () => {
           
         </div>
         
-          <Button className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700" onClick={fetchData} disabled={loading}>
+          <Button className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700" onClick={fetchData} disabled={!loading}>
             Locate
           </Button>
         </div>
       </div>
       <br />
       <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm">
-         {loading ? <Loading/> : 'Test Api credentials have been expired '}
+         {loading ? <Loading/> : 'Test Api credentials have been expired'}
       </div>
     </div>
   )

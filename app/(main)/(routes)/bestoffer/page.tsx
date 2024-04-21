@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import { addDays, format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { Calendar } from "@/components/ui/calendar"
+
 import {
   Popover,
   PopoverContent,
@@ -23,7 +24,8 @@ import {
 import { cn } from '@/lib/utils'
 import Combobox from '@/components/component/combobox'
 
- interface Airport {
+
+interface Airport {
   name: string;
   city: string;
   country: string;
@@ -46,24 +48,31 @@ const Bestofferes = () => {
   const [selectedAirportfrom, setSelectedAirportfrom] = useState(sampleJson);
   const [selectedAirportto, setSelectedAirportto] = useState(sampleJson);
   const [startdate, setstartdate] = React.useState<Date>(new Date());
-  const [originLocationCode,setOriginLocationCode] = useState("");
-  const [destinationLocationCode,setDestinationLocationCode] = useState("");
-  const [adults,setadults] =useState("1");
-  const [count,setCount] = useState(0);
+  const [originLocationCode, setOriginLocationCode] = useState("");
+  const [destinationLocationCode, setDestinationLocationCode] = useState("");
+  const [adults, setadults] = useState("1");
+  const [count, setCount] = useState(0);
   const [isloading, setisLoading] = useState(false);
   const [isMobloading, setisMobLoading] = useState(false);
-  
 
-  const handleAirportSelectTo = (airportTo:Airport): Airport => {
-    setCount(count+1)
+  const [search, setSearch] = useState(true);
+  const [buttonName, setButtonName] = useState("Check For Offers")
+
+
+  const handleAirportSelectTo = (airportTo: Airport): Airport => {
+    setCount(count + 1)
     setSelectedAirportto(airportTo);
     setDestinationLocationCode(airportTo.code);
+    console.log(count)
+    if (count >= 1) { setisMobLoading(true); }
     return airportTo;
   };
-  const handleAirportSelectFrom = (airportFrom:Airport) : Airport => {
-    setCount(count+1)
+  const handleAirportSelectFrom = (airportFrom: Airport): Airport => {
+    setCount(count + 1)
     setSelectedAirportfrom(airportFrom);
     setOriginLocationCode(airportFrom.code);
+    console.log(count)
+    if (count >= 1) { setisMobLoading(true); }
     return airportFrom;
   };
   // api call
@@ -72,27 +81,33 @@ const Bestofferes = () => {
   const url = "https://test.api.amadeus.com/v2/shopping/flight-offers?";
 
   const fetchData = async () => {
-    const link = url + 'originLocationCode='+selectedAirportfrom.code+'&destinationLocationCode='+selectedAirportto.code+'&departureDate='+moment(startdate).format('YYYY-MM-DD')+'&adults='+adults+'&nonStop=false&max=250';
-    setLoading(true);
-    try {
-      const response = await fetch(link, {
-        headers: {
-          Authorization: `Bearer ${process.env.AMADEUS_API_KEY}`, 
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
+    if (search) {
+      setSearch(false);
+      setButtonName("Clear Search");
+
+      const link = url + 'originLocationCode=' + selectedAirportfrom.code + '&destinationLocationCode=' + selectedAirportto.code + '&departureDate=' + moment(startdate).format('YYYY-MM-DD') + '&adults=' + adults + '&nonStop=false&max=250';
+      setLoading(true);
+      try {
+        const response = await fetch(link, {
+          headers: {
+            Authorization: `Bearer ${process.env.AMADEUS_API_KEY}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+      } catch (error) {
+        console.error('Error fetching flight data:', error);
       }
-  
-      const data = await response.json();
-      
-      
-    } catch (error) {
-      console.error('Error fetching flight data:', error);
+      setLoading(false);
+    }else{
+      setSearch(true);
+      setButtonName("Check For Offers");
     }
-    setLoading(false);
-  };
+  }
+
 
   return (
     <>
@@ -103,20 +118,68 @@ const Bestofferes = () => {
         iconColor='text-blue-500'
         bgColor='bg-blue-500/10'
       />
-       {/* Responsive layout for small and medium devices */}
-       <div className='sm:block md:hidden'>
-        <Combobox title="Please Provide From" onSelect={handleAirportSelectTo} />
-      
-        <Combobox title="Please Provide To" onSelect={handleAirportSelectFrom} />
-    
-        <div className="relative grid grid-cols-1 md:grid md:grid-cols-2">
-         
-               <Popover>
+      {/* Responsive layout for small and medium devices */}
+      <div className='block md:hidden'>
+        <Combobox title="TakeOff" onSelect={handleAirportSelectTo} />
+        <Combobox title="Destination" onSelect={handleAirportSelectFrom} />
+        <div className="relative grid grid-cols-2 gap-12 mb-2">
+
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant={"outline"}
+                className={cn(
+                  "w-[165px] justify-start text-left font-normal sm:w-[55px]",
+                  !startdate && "text-muted-foreground"
+                )}
+              >
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {startdate ? format(startdate, "PPP") : <span>Start Date</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="flex w-auto flex-col space-y-2 p-2">
+              <Select
+                onValueChange={() => {
+                  setCount(count + 1)
+                }}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent position="popper">
+                  <SelectItem value="0">Today</SelectItem>
+                  <SelectItem value="1">Tomorrow</SelectItem>
+                  <SelectItem value="3">In 3 days</SelectItem>
+                  <SelectItem value="7">In a week</SelectItem>
+                </SelectContent>
+              </Select>
+              <div className="rounded-md border">
+                <Calendar mode="single" selected={startdate} onSelect={() => { setstartdate(startdate) }} />
+              </div>
+            </PopoverContent>
+          </Popover>
+          <Input type="number" placeholder="Adults" onChange={e => { setadults(e.currentTarget.value.toString()); }} />
+        </div>
+        <Button disabled={!isMobloading} onClick={fetchData} className='bg-blue-500 hover:bg-blue-600 active:bg-blue-700 ml-12 relative  w-[8865] md:w-[165px]'>
+          {buttonName}
+        </Button>
+      </div>
+
+      {/* Responsive layout for large devices */}
+      <div className='hidden md:hidden lg:block rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2'>
+        <div className='hidden md:grid md:grid-cols-2 md:gap-4'>
+          <Combobox title="TakeOff" onSelect={handleAirportSelectTo} />
+          <Combobox title="Destination" onSelect={handleAirportSelectFrom} />
+        </div>
+
+        <div className='pl-3 grid grid-cols-3 gap-3'>
+          <div>
+            <Popover>
               <PopoverTrigger asChild>
                 <Button
                   variant={"outline"}
                   className={cn(
-                    "w-[165px] justify-start text-left font-normal sm:w-[65px]",
+                    "w-[280px] justify-start text-left font-normal",
                     !startdate && "text-muted-foreground"
                   )}
                 >
@@ -126,9 +189,9 @@ const Bestofferes = () => {
               </PopoverTrigger>
               <PopoverContent className="flex w-auto flex-col space-y-2 p-2">
                 <Select
-                  onValueChange={()=> {
-                    setCount(count+1)
-                  }}
+                  onValueChange={(value) =>
+                    setstartdate(addDays(new Date(), parseInt(value)))
+                  }
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select" />
@@ -141,78 +204,27 @@ const Bestofferes = () => {
                   </SelectContent>
                 </Select>
                 <div className="rounded-md border">
-                  <Calendar mode="single" selected={startdate} onSelect={()=>{setstartdate(startdate)}} />
+                  <Calendar mode="single" selected={startdate} onSelect={() => { setstartdate(startdate) }} />
                 </div>
               </PopoverContent>
-               </Popover>
-                <Button disabled={!isMobloading} onClick={fetchData} className='relative w-[165px]'>
-                  Check
-                </Button>
-    
-        </div>
-        
-      </div>
-    
-       {/* Responsive layout for large devices */}
-       <div className='sm:hidden md:hidden lg:block rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2'>
-       <div className='hidden md:grid md:grid-cols-2 md:gap-4'>
-        <Combobox title="Please Provide From" onSelect={handleAirportSelectTo} />
-        <Combobox title="Please Provide To" onSelect={handleAirportSelectFrom} />
-       </div>
-     
-       <div className='pl-3 grid grid-cols-3 gap-3'>
-          <div>
-            <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-[280px] justify-start text-left font-normal",
-                        !startdate && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {startdate ? format(startdate, "PPP") : <span>Start Date</span>}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="flex w-auto flex-col space-y-2 p-2">
-                    <Select
-                      onValueChange={(value) =>
-                        setstartdate(addDays(new Date(), parseInt(value)))
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent position="popper">
-                        <SelectItem value="0">Today</SelectItem>
-                        <SelectItem value="1">Tomorrow</SelectItem>
-                        <SelectItem value="3">In 3 days</SelectItem>
-                        <SelectItem value="7">In a week</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <div className="rounded-md border">
-                    <Calendar mode="single" selected={startdate} onSelect={()=>{setstartdate(startdate)}} />
-                    </div>
-                  </PopoverContent>
             </Popover>
           </div>
-          
+
           <div>
-          <Input type="number" placeholder="Number of Adults" onChange={e => { setadults(e.currentTarget.value.toString()); }} />
+            <Input type="number" placeholder="Number of Adults" onChange={e => { setadults(e.currentTarget.value.toString()); }} />
           </div>
-        <div className='text-center'>
-          <Button className='bg-blue-500 hover:bg-blue-600 active:bg-blue-700' disabled={false} onClick={fetchData}>
-            Check
-          </Button>
+          <div className='text-center'>
+            <Button className='bg-blue-500 hover:bg-blue-600 active:bg-blue-700' disabled={!isMobloading} onClick={fetchData}>
+              {buttonName}
+            </Button>
+          </div>
         </div>
-      </div> 
       </div>
       <br />
-      <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2">
-       {loading? <Loader/>:<p>Test Api credentials have been expired</p> }
-       </div>
-       
+      <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm">
+        {!loading ? <p>Search to get results</p> : <p>Test Api credentials have been expired</p>}
+      </div>
+
 
     </>
   )

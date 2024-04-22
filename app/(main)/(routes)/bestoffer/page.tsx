@@ -118,11 +118,10 @@ const Bestofferes = () => {
         iconColor='text-blue-500'
         bgColor='bg-blue-500/10'
       />
-      {/* Responsive layout for small and medium devices */}
       <div className='block md:hidden'>
         <Combobox title="TakeOff" onSelect={handleAirportSelectTo} />
         <Combobox title="Destination" onSelect={handleAirportSelectFrom} />
-        <div className="relative grid grid-cols-2 gap-12 mb-2">
+        <div className="relative grid grid-cols-2 gap-12 mb-2 mr-2 ml-2">
 
           <Popover>
             <PopoverTrigger asChild>
@@ -160,13 +159,16 @@ const Bestofferes = () => {
           </Popover>
           <Input type="number" placeholder="Adults" onChange={e => { setadults(e.currentTarget.value.toString()); }} />
         </div>
-        <Button disabled={!isMobloading} onClick={fetchData} className='bg-blue-500 hover:bg-blue-600 active:bg-blue-700 ml-12 relative  w-[8865] md:w-[165px]'>
+        <div className='text-center'>
+          <Button disabled={!isMobloading} onClick={fetchData} className='bg-blue-500 hover:bg-blue-600 active:bg-blue-700 relative  w-[8865] md:w-[165px]'>
           {buttonName}
         </Button>
+        </div>
+        
       </div>
 
       {/* Responsive layout for large devices */}
-      <div className='hidden md:hidden lg:block rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2'>
+      <div className=' md:hidden lg:block rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2'>
         <div className='hidden md:grid md:grid-cols-2 md:gap-4'>
           <Combobox title="TakeOff" onSelect={handleAirportSelectTo} />
           <Combobox title="Destination" onSelect={handleAirportSelectFrom} />

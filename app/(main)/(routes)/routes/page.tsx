@@ -76,9 +76,12 @@ const Routes = () => {
       <div className='rounded-lg border w-full p-4 grid grid-flow-col-3 md:grid-cols-3 md:gap-2 px-3 md:px-6 focus-within:shadow-sm '>
          <Combobox title="Takeoff" onSelect={handleAirportSelectTo} />
          <Combobox title="Landing" onSelect={handleAirportSelectFrom} />
-         <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 w-full" disabled={!toselected || !fromselected} onClick={resultSelection}>
+         <div className='pr-2 pl-2'>
+          <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 w-full" disabled={!toselected || !fromselected} onClick={resultSelection}>
           Show Route
-      </Button>
+          </Button>
+         </div>
+         
       </div>
 
       

@@ -23,13 +23,14 @@ const Airport = () => {
   }
   const sampleJson = {
     altitude: 52,
-    city: "Madras",
-    code: "MAA",
-    country: "India",
-    latitude: 12.990005493164062,
-    longitude: 80.16929626464844,
-    name: "Chennai International Airport"
+    city: "",
+    code: "",
+    country: "",
+    latitude: 0,
+    longitude: 0,
+    name: ""
   }
+  const [buttonName, setButtonName] = useState("Search Airport")
   const [result, setResult] = useState(false);
   const [selectedAirport, setSelectedAirport] = useState(sampleJson);
   const [coordinates, setCoordinates] = useState<[number, number]>([0, 0]);
@@ -42,6 +43,17 @@ const Airport = () => {
     setisLoading(true);
     return airport;
   };
+  const SubmitButtonClicked=()=>{
+    setResult(!result)
+    if(!result){
+      setButtonName('Clear Search');
+    }else{
+      setButtonName('Search Airport');
+      setSelectedAirport(sampleJson)
+    }
+    
+    handleAirportSelect(sampleJson)
+  }
 
   return (
     <>
@@ -59,8 +71,8 @@ const Airport = () => {
 
           <Combobox title="Start Airport" onSelect={handleAirportSelect} />
         </div>
-        <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!isLoading} onClick={() => setResult(true)}>
-          Search
+        <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!isLoading} onClick={SubmitButtonClicked}>
+        {buttonName}
         </Button>
       </div>
       <br />

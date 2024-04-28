@@ -19,26 +19,29 @@ interface Airport {
   altitude: number;
 }
 const sampleJson = {
-  altitude: 52,
-  city: "Madras",
-  code: "MAA",
-  country: "India",
-  latitude: 12.990005493164062,
-  longitude: 80.16929626464844,
-  name: "Chennai International Airport"
+  altitude: 0,
+  city: "",
+  code: "",
+  country: "",
+  latitude: 0,
+  longitude: 0,
+  name: ""
 }
 const sampleJson2 = 
   {
-    "name": "Trivandrum International Airport",
-    "city": "Trivandrum",
-    "country": "India",
-    "code": "TRV",
-    "latitude": 8.48211956024,
-    "longitude": 76.9200973511,
-    "altitude": 15.0
+    "name": "",
+    "city": "",
+    "country": "",
+    "code": "",
+    "latitude": 0,
+    "longitude": 0,
+    "altitude": 0
 }
 
 const Routes = () => {
+  const [buttonName, setButtonName] = useState("Show Route");
+  const [search, setsearch] = useState(false);
+
   const [selectedAirportfrom, setSelectedAirportfrom] = useState(sampleJson);
   const [selectedAirportto, setSelectedAirportto] = useState(sampleJson2);
   const [toselected, settoselected] = useState(false);
@@ -61,6 +64,9 @@ const Routes = () => {
     return airport;
   };
   const resultSelection = () => {
+    setsearch(false);
+    setButtonName('Clear Search')
+    setSelectedAirportto(sampleJson)
     setResult(true);
   };
   return (
@@ -78,7 +84,7 @@ const Routes = () => {
          <Combobox title="Landing" onSelect={handleAirportSelectFrom} />
          <div className='pr-2 pl-2'>
           <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 w-full" disabled={!toselected || !fromselected} onClick={resultSelection}>
-          Show Route
+          {buttonName}
           </Button>
          </div>
          

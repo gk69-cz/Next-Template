@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 const Sidebar = () => {
     const pathname = usePathname();
   return (
-    <div className='space-y-4 py-4 flex flex-col h-full bg-[#3F72AF] text-white '>
+    <div className='space-y-4 py-4 flex flex-col h-full bg-[#1f4573] text-white '>
         <div className='px-3 py-2'>
             <Link href='/home' className='flex items-center pl-3 mb-14'>
                 <div className='relative w-12 h-12 mt-2'>

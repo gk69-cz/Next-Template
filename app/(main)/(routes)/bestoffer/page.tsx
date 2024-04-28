@@ -23,6 +23,8 @@ import {
 } from "@/components/ui/select"
 import { cn } from '@/lib/utils'
 import Combobox from '@/components/component/combobox'
+import Popup from '@/components/component/popup';
+import BestData from '@/components/component/bestoffers';
 
 
 interface Airport {
@@ -47,16 +49,25 @@ const sampleJson = {
 const Bestofferes = () => {
   const [selectedAirportfrom, setSelectedAirportfrom] = useState(sampleJson);
   const [selectedAirportto, setSelectedAirportto] = useState(sampleJson);
-  const [startdate, setstartdate] = React.useState<Date>(new Date());
+  const [startdate, setstartdate] = React.useState<Date>();
   const [originLocationCode, setOriginLocationCode] = useState("");
   const [destinationLocationCode, setDestinationLocationCode] = useState("");
+  const [sampleData, setsampleData] = useState(false);
   const [adults, setadults] = useState("1");
   const [count, setCount] = useState(0);
   const [isloading, setisLoading] = useState(false);
   const [isMobloading, setisMobLoading] = useState(false);
 
+  const [showModal, setShowModal] = useState(false);
+  const [modalValue, setModalValue] = useState(false);
+
   const [search, setSearch] = useState(true);
-  const [buttonName, setButtonName] = useState("Check For Offers")
+  const [buttonName, setButtonName] = useState("Check For Offers");
+  const modalResults = (modalValue: boolean) => {
+    setModalValue(modalValue)
+    setShowModal(false);
+    return modalValue;
+  };
 
 
   const handleAirportSelectTo = (airportTo: Airport): Airport => {
@@ -79,12 +90,12 @@ const Bestofferes = () => {
   const [offers, setoffers] = useState([]);
   const [loading, setLoading] = useState(false);
   const url = "https://test.api.amadeus.com/v2/shopping/flight-offers?";
-
   const fetchData = async () => {
+    setSearch(!search);
     if (search) {
       setSearch(false);
       setButtonName("Clear Search");
-
+      setShowModal(true)
       const link = url + 'originLocationCode=' + selectedAirportfrom.code + '&destinationLocationCode=' + selectedAirportto.code + '&departureDate=' + moment(startdate).format('YYYY-MM-DD') + '&adults=' + adults + '&nonStop=false&max=250';
       setLoading(true);
       try {
@@ -99,10 +110,10 @@ const Bestofferes = () => {
         }
         const data = await response.json();
       } catch (error) {
-        console.error('Error fetching flight data:', error);
+        setsampleData(true)
       }
-      setLoading(false);
-    }else{
+    } else {
+      setShowModal(false);
       setSearch(true);
       setButtonName("Check For Offers");
     }
@@ -122,7 +133,6 @@ const Bestofferes = () => {
         <Combobox title="TakeOff" onSelect={handleAirportSelectTo} />
         <Combobox title="Destination" onSelect={handleAirportSelectFrom} />
         <div className="relative grid grid-cols-2 gap-12 mb-2 mr-2 ml-2">
-
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -153,7 +163,7 @@ const Bestofferes = () => {
                 </SelectContent>
               </Select>
               <div className="rounded-md border">
-                <Calendar mode="single" selected={startdate} onSelect={() => { setstartdate(startdate) }} />
+                <Calendar mode="single" selected={startdate} onSelect={setstartdate} />
               </div>
             </PopoverContent>
           </Popover>
@@ -161,14 +171,14 @@ const Bestofferes = () => {
         </div>
         <div className='text-center'>
           <Button disabled={!isMobloading} onClick={fetchData} className='bg-blue-500 hover:bg-blue-600 active:bg-blue-700 relative  w-[8865] md:w-[165px]'>
-          {buttonName}
-        </Button>
+            {buttonName}
+          </Button>
         </div>
-        
+
       </div>
 
       {/* Responsive layout for large devices */}
-      <div className=' md:hidden lg:block rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2'>
+      <div className='sm:hidden lg:block rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2'>
         <div className='hidden md:grid md:grid-cols-2 md:gap-4'>
           <Combobox title="TakeOff" onSelect={handleAirportSelectTo} />
           <Combobox title="Destination" onSelect={handleAirportSelectFrom} />
@@ -206,7 +216,7 @@ const Bestofferes = () => {
                   </SelectContent>
                 </Select>
                 <div className="rounded-md border">
-                  <Calendar mode="single" selected={startdate} onSelect={() => { setstartdate(startdate) }} />
+                  <Calendar mode="single" selected={startdate} onSelect={setstartdate} />
                 </div>
               </PopoverContent>
             </Popover>
@@ -224,8 +234,22 @@ const Bestofferes = () => {
       </div>
       <br />
       <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm">
-        {!loading ? <p>Search to get results</p> : <p>Test Api credentials have been expired</p>}
+        {!(sampleData == true) ? 'Search for details' :
+          <BestData
+            flag="test"
+            name="name"
+            time="2:45"
+            date="3.984"
+          />}
+
       </div>
+      {showModal &&
+        <Popup
+          title="Mock Data Preview"
+          message="It conveys the idea of exploring fabricated flight information in a clear and engaging manner"
+          onSelect={modalResults}
+        />
+      }
 
 
     </>

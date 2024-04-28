@@ -4,7 +4,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-curve';
 import L from 'leaflet';
-import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface AirportType {
@@ -66,8 +65,8 @@ const RouteMapComponent: React.FC<RouteMapProps> = ({ selectedAirportto, selecte
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          {startLocation && <Marker position={startLocation}><Popup>{selectedAirportfrom.name}</Popup></Marker>}
-          {endLocation && <Marker position={endLocation}><Popup>{selectedAirportto.name}</Popup></Marker>}
+          {startLocation && <Marker position={startLocation}><Popup>{selectedAirportto.name}</Popup></Marker>}
+          {endLocation && <Marker position={endLocation}><Popup>{selectedAirportfrom.name}</Popup></Marker>}
         </MapContainer>
       </div>
       <div className="hidden md:block">

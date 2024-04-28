@@ -1,0 +1,65 @@
+{
+    "meta": {
+      "count": 1,
+      "links": {
+        "self": "https://test.api.amadeus.com/v2/schedule/flights?carrierCode=TP&flightNumber=487&scheduledDepartureDate=2023-08-01"
+      }
+    },
+    "data": [
+      {
+        "type": "DatedFlight",
+        "scheduledDepartureDate": "2023-08-01",
+        "flightDesignator": {
+          "carrierCode": "TP",
+          "flightNumber": 487
+        },
+        "flightPoints": [
+          {
+            "iataCode": "NCE",
+            "departure": {
+              "timings": [
+                {
+                  "qualifier": "STD",
+                  "value": "2023-08-01T18:10+02:00"
+                }
+              ]
+            }
+          },
+          {
+            "iataCode": "LIS",
+            "arrival": {
+              "timings": [
+                {
+                  "qualifier": "STA",
+                  "value": "2023-08-01T19:45+01:00"
+                }
+              ]
+            }
+          }
+        ],
+        "segments": [
+          {
+            "boardPointIataCode": "NCE",
+            "offPointIataCode": "LIS",
+            "scheduledSegmentDuration": "PT2H35M",
+            "partnership": {
+              "operatingFlight": {
+                "carrierCode": "A3",
+                "flightNumber": 1748
+              }
+            }
+          }
+        ],
+        "legs": [
+          {
+            "boardPointIataCode": "NCE",
+            "offPointIataCode": "LIS",
+            "aircraftEquipment": {
+              "aircraftType": "E90"
+            },
+            "scheduledLegDuration": "PT2H35M"
+          }
+        ]
+      }
+    ]
+  }

@@ -1,7 +1,7 @@
 // components/AdComponent.js
 'use client'
 import { useEffect } from 'react';
-const url = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client='+${process.env.AMADEUS_API_KEY}`
+const url = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client='+${process.env.Add_Sence}`
 const AdComponent = () => {
   useEffect(() => {
     const script = document.createElement('script');

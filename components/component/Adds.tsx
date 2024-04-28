@@ -7,8 +7,6 @@ const AdComponent = () => {
     const script = document.createElement('script');
     script.src = url;
     script.crossOrigin = "anonymous";
-    document.body.appendChild(script);
-
   
   }, []);
 

@@ -23,7 +23,6 @@ export default function RootLayout({
       <Head>
           {/* Add the Google AdSense meta tag */}
           <meta name="google-adsense-account" content="ca-pub-4485865253703650" />
-
           {/* Other meta tags and external scripts */}
         </Head>
 

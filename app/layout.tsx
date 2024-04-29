@@ -23,9 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-          {/* Add the Google AdSense meta tag */}
-          <meta name="google-adsense-account" content="ca-pub-4485865253703650" />
-          {/* Other meta tags and external scripts */}
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4485865253703650"
+     crossOrigin="anonymous"></script>
         </Head>
 
       <body className={inter.className}>

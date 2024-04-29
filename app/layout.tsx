@@ -1,16 +1,18 @@
-import type { Metadata } from "next";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Head from 'next/head';
 import Sidebar from "@/components/component/sidebar";
 import NavigationMobile from "@/components/component/navigation";
+import { Metadata } from 'next';
+
 
 
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "Airwise",
   description: "Your destination for seamless travel experiences",
+
 };
 
 export default function RootLayout({

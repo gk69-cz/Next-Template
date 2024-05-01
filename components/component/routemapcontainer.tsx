@@ -55,11 +55,8 @@ const RouteMapComponent: React.FC<RouteMapProps> = ({ selectedAirportto, selecte
 
 
   return (
-    <div className="w-full lg:w-3/4 mx-auto float-left">
-      <ArrowLeft className='w-5 h-5 md:hidden' onClick={() => { setToggle(!toggle); setMapView(!mapview) }} />
-
+    <div className="rounded-lg border w-full lg:w-3/4 mx-auto float-left p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-1 gap-2">
       <div className="relative" style={{ paddingTop: '56.25%' }}>
-        <ArrowRight className='w-5 h-5 md:hidden' onClick={() => { setToggle(!toggle); setMapView(!mapview) }} />
         <MapContainer center={[((startLocation[0] + endLocation[0]) / 2), ((startLocation[1] + endLocation[1]) / 2)]} zoom={4} style={{ height: '400px', width: '100%' }} className="absolute top-0 left-0 w-full h-full">
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -69,29 +66,25 @@ const RouteMapComponent: React.FC<RouteMapProps> = ({ selectedAirportto, selecte
           {endLocation && <Marker position={endLocation}><Popup>{selectedAirportfrom.name}</Popup></Marker>}
         </MapContainer>
       </div>
-      <div className="hidden md:block">
+      <div className="hidden md:block text-center">
         <div className=" border border-gray-300 rounded-lg p-4 inline-block absolute top-1/3 left-3/4" style={{ height: '400px' }}>
-          <ArrowRight className='w-5 h-5 md:hidden' onClick={() => { setToggle(!toggle); setMapView(!mapview) }} />
-          <h2 className="text-lg mb-2">Testing</h2>
+          <h2 className="text-lg mb-2">Route Details</h2>
           <p className="text-md mb-2">In the diverse and culturally rich nation of , where vibrant cityscapes blend with serene countryside, lies , a bustling hub of travel and adventure.This airport offers travelers a gateway to the world. It is  meters above sea level, passengers embark on journeys filled with anticipation and wonder, leaving behind the familiar and venturing into the boundless skies</p>
           <div className="mt-[-10] flex items-center mb-4">
           </div>
         </div>
       </div>
-      {toggle &&
-        <div className="block md:hidden">
-          <div className=" border border-gray-300 bg-slate-50 inline-block absolute top-1/3 pt-21 z-50-999999" >
-            {/* <div className="border border-gray-300 rounded-lg p-4 m-4 shadow-lg"> */}
-            <ArrowRight className='w-5 h-5 md:hidden' onClick={() => { setToggle(!toggle); setMapView(!mapview) }} />
-            <h2 className="text-lg mb-2">testing</h2>
-            ll
-            <p className="text-md mb-2">In the diverse and culturally rich nation of , where vibrant cityscapes blend with serene countryside, lies , a bustling hub of travel and adventure.This airport offers travelers a gateway to the world. It is  meters above sea level, passengers embark on journeys filled with anticipation and wonder, leaving behind the familiar and venturing into the boundless skies</p>
-            <div className="mt-[-10] flex items-center mb-4">
 
-            </div>
+      <div className="block md:hidden text-center mt-64">
+        <div className=" border border-gray-300 rounded-lg p-4 inline-block top-2/3 left-3/4" style={{ height: '400px' }}>
+          <h2 className="text-lg mb-2">Route Details</h2>
+          <p className="text-md mb-2">In the diverse and culturally rich nation of , where vibrant cityscapes blend with serene countryside, lies , a bustling hub of travel and adventure.This airport offers travelers a gateway to the world. It is  meters above sea level, passengers embark on journeys filled with anticipation and wonder, leaving behind the familiar and venturing into the boundless skies</p>
+          <div className="mt-[-10] flex items-center mb-4">
           </div>
         </div>
-      }
+      </div>
+        
+    
     </div>
   );
 };

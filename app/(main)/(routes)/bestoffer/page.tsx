@@ -178,9 +178,9 @@ const Bestofferes = () => {
       </div>
 
       {/* Responsive layout for large devices */}
-      <div className='sm:hidden lg:block rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2'>
+      <div className='hidden lg:block rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid col-span-2 gap-2'>
         <div className='hidden md:grid md:grid-cols-2 md:gap-4'>
-          <Combobox title="TakeOff" onSelect={handleAirportSelectTo} />
+          <Combobox title="Take off" onSelect={handleAirportSelectTo} />
           <Combobox title="Destination" onSelect={handleAirportSelectFrom} />
         </div>
 
@@ -236,10 +236,14 @@ const Bestofferes = () => {
       <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm">
         {!(sampleData == true) ? 'Search for details' :
           <BestData
-            flag="test"
-            name="name"
-            time="2:45"
-            date="3.984"
+            flagStart={selectedAirportfrom.country}
+            flagEnd={selectedAirportto.country}
+            nameStart={selectedAirportfrom.name}
+            timeStart='2:30'
+            dateStart= {moment(startdate).format('YYYY-MM-DD')}
+            nameEnd={selectedAirportto.name}
+            timeEnd='5:40'
+            dateEnd={moment(startdate).format('YYYY-MM-DD')}
           />}
 
       </div>

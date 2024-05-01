@@ -22,7 +22,7 @@ const Airport = () => {
     altitude: number;
   }
   const sampleJson = {
-    altitude: 52,
+    altitude: 0,
     city: "",
     code: "",
     country: "",
@@ -39,6 +39,7 @@ const Airport = () => {
 
   const handleAirportSelect = (airport: AirportType) => {
     setSelectedAirport(airport);
+    console.log(airport);
     setCoordinates([airport.latitude, airport.longitude]);
     setisLoading(true);
     return airport;
@@ -46,13 +47,12 @@ const Airport = () => {
   const SubmitButtonClicked=()=>{
     setResult(!result)
     if(!result){
-      setButtonName('Clear Search');
+      setButtonName('Clear Search'); 
+      
     }else{
       setButtonName('Search Airport');
       setSelectedAirport(sampleJson)
     }
-    
-    handleAirportSelect(sampleJson)
   }
 
   return (

@@ -27,8 +27,8 @@ const Sidebar = () => {
                 <Link
                 href={route.href}
                 key={route.label}
-                className={cn("text-sm group flex p-3 w-full justify-start font-medium cursor-pointer text-gray-900 hover:text-white hover:bg-white/10 rounded-lg transition",pathname === route.href ?'text-white bg-white/10':'text-zinc-400')}>
-                    <div className='flex item-center flex-1'>
+                className={cn("text-sm group flex p-3 w-full justify-start font-medium cursor-pointer text-white hover:text-white hover:bg-white/10 rounded-lg transition",pathname === route.href ?'text-white bg-white/10':'text-zinc-400')}>
+                    <div className='flex item-center flex-1 text-white'>
                         <route.icon className={cn('h-5 w-5 mr-3',route.color)}/>
                         {route.label}
                     </div>

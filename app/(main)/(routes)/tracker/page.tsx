@@ -69,9 +69,8 @@ const Routeone = () => {
         setsampleData(true)
       }
     } else {
-      console.log('test')
       setShowModal(false);
-      setFlightName(''); // Reset the input field value here
+      setFlightName(''); 
       setButtonName("Locate");
     }
   }

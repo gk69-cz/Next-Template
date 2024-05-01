@@ -39,7 +39,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## main components usages
 
 Leaflet - npm for maps
-openweather
-openskynetwork
 
 

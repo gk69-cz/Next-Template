@@ -85,7 +85,7 @@ const Routeone = () => {
         bgColor='bg-blue-500/10'
       />
       <div className="relative grid grid-cols-1 gap-2  md:grid-cols-3 md:gap-12 mb-2 mr-2 ml-2">
-        <Input type="text" placeholder="Flight Number" value={flightName} onChange={e => { setFlightName(e.currentTarget.value) }} />
+        <Input type="text" placeholder="Flight Number" value={flightName} onChange={e => { setFlightName(e.currentTarget.value);setLoading(true) }} />
         <Popover>
           <PopoverTrigger asChild>
             <Button
@@ -121,7 +121,7 @@ const Routeone = () => {
           </PopoverContent>
         </Popover>
         <div className='text-center'>
-          <Button className="w-64 bg-blue-500 hover:bg-blue-600 active:bg-blue-700" onClick={fetchData}>
+          <Button className="w-64 bg-blue-500 hover:bg-blue-600 active:bg-blue-700" disabled={!loading} onClick={fetchData}>
             {buttonName}
           </Button>
         </div>

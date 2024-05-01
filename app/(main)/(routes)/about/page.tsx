@@ -31,7 +31,7 @@ const About = () => {
 
                     <div>
                         <h2 className="text-xl font-semibold mb-4">Our Story</h2>
-                        <p className="text-gray-700 mb-6">Established in 2022, Airwise started as a humble Next.js project. Since then, we've expanded to include features like 404 pages, loaders, modals, popups, and API routes. We leverage AMADEUS for data retrieval.This journey has been marked by growth, challenges, and the invaluable support of our community. Explore our project and more on GitHub.</p>
+                        <p className="text-gray-700 mb-6">Established in 2022, Airwise started as a humble Next.js project. Since then, we have expanded to include features like 404 pages, loaders, modals, popups, and API routes. We leverage AMADEUS for data retrieval.This journey has been marked by growth, challenges, and the invaluable support of our community. Explore our project and more on GitHub.</p>
 
                         <h2 className="text-xl font-semibold mb-4">Meet the Creator</h2>
                         <div className="grid grid-cols-2 gap-4">

@@ -5,14 +5,14 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 interface MapComponentProps {
-    coordinates: [number, number];
-  }
+  coordinates: [number, number];
+}
 
 const MapComponent: React.FC<MapComponentProps> = ({ coordinates }) => {
   useEffect(() => {
     // Ensure Leaflet icons are correctly displayed
     delete (L.Icon.Default.prototype as any)._getIconUrl;
-    L.Icon.Default.imagePath='public/'
+    L.Icon.Default.imagePath = 'public/'
     L.Icon.Default.mergeOptions({
       iconRetinaUrl: '/mapPin.png',
       iconUrl: '/marker-icon.png',

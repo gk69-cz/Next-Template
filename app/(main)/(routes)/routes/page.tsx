@@ -27,15 +27,15 @@ const sampleJson = {
   longitude: 0,
   name: ""
 }
-const sampleJson2 = 
-  {
-    "name": "",
-    "city": "",
-    "country": "",
-    "code": "",
-    "latitude": 0,
-    "longitude": 0,
-    "altitude": 0
+const sampleJson2 =
+{
+  "name": "",
+  "city": "",
+  "country": "",
+  "code": "",
+  "latitude": 0,
+  "longitude": 0,
+  "altitude": 0
 }
 
 const Routes = () => {
@@ -48,19 +48,19 @@ const Routes = () => {
   const [fromselected, setfromselected] = useState(false);
   const [tocoordinates, settocoordinates] = useState<[number, number]>([0, 0]);
   const [forcoordinates, setforcoordinates] = useState<[number, number]>([0, 0]);
-  
+
   const [result, setResult] = useState(false);
 
-  const handleAirportSelectTo = (airport:Airport):Airport => {
+  const handleAirportSelectTo = (airport: Airport): Airport => {
     setSelectedAirportto(airport);
     settoselected(true)
-    settocoordinates([airport.latitude,airport.longitude]);
+    settocoordinates([airport.latitude, airport.longitude]);
     return airport;
   };
-  const handleAirportSelectFrom = (airport :Airport): Airport => {
+  const handleAirportSelectFrom = (airport: Airport): Airport => {
     setSelectedAirportfrom(airport);
     setfromselected(true)
-    setforcoordinates([airport.latitude,airport.longitude]);
+    setforcoordinates([airport.latitude, airport.longitude]);
     return airport;
   };
   const resultSelection = () => {
@@ -71,7 +71,7 @@ const Routes = () => {
   };
   return (
     <>
-    <Heading
+      <Heading
         title="Check Routes"
         description='Get the details of the travel'
         icon={Map}
@@ -80,25 +80,22 @@ const Routes = () => {
       />
       {/* large */}
       <div className='rounded-lg border w-full p-4 grid grid-flow-col-3 md:grid-cols-3 md:gap-2 px-3 md:px-6 focus-within:shadow-sm '>
-         <Combobox title="Takeoff" onSelect={handleAirportSelectTo} />
-         <Combobox title="Landing" onSelect={handleAirportSelectFrom} />
-         <div className='pr-2 pl-2'>
+        <Combobox title="Takeoff" onSelect={handleAirportSelectTo} />
+        <Combobox title="Landing" onSelect={handleAirportSelectFrom} />
+        <div className='pr-2 pl-2'>
           <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 w-full" disabled={!toselected || !fromselected} onClick={resultSelection}>
-          {buttonName}
+            {buttonName}
           </Button>
-         </div>
-         
+        </div>
       </div>
-
-      
       <br />
-     {result ?
-     <RouteMapComponent selectedAirportto={selectedAirportto} selectedAirportfrom={selectedAirportfrom} startLocation={tocoordinates} endLocation={forcoordinates} />
-     : <div className="flex justify-center items-center">
-     <p className=" p-8 rounded-lg">
-       PLEASE DO SEARCH
-     </p>
-   </div>}
+      {result ?
+        <RouteMapComponent selectedAirportto={selectedAirportto} selectedAirportfrom={selectedAirportfrom} startLocation={tocoordinates} endLocation={forcoordinates} />
+        : <div className="flex justify-center items-center">
+          <p className=" p-8 rounded-lg">
+            PLEASE DO SEARCH
+          </p>
+        </div>}
     </>
   )
 }

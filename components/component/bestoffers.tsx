@@ -16,12 +16,10 @@ const BestData: React.FC<BestDataa> = (props) => {
 
   return (
     <>
-
-
       <div className="md:grid md:grid-cols-3 md:gap-4">
         <div className="col-span-1 text-center bg-gray-100">
           <ul>
-          <li className="px-3 py-2 text-sm cursor-pointer ">
+            <li className="px-3 py-2 text-sm cursor-pointer ">
               Airport Name : {props.nameEnd}
             </li>
             <li className="px-3 py-2 text-sm cursor-pointer ">
@@ -35,9 +33,9 @@ const BestData: React.FC<BestDataa> = (props) => {
         </div>
         <div className="col-span-1 text-center ">
           <ul>
-          <li className="px-3 py-2 text-sm cursor-pointer ">
-         Travel Time : 2hrs : 35min
-        </li>
+            <li className="px-3 py-2 text-sm cursor-pointer ">
+              Travel Time : 2hrs : 35min
+            </li>
           </ul>
         </div>
         <div className="col-span-1 text-center bg-gray-100">
@@ -54,12 +52,7 @@ const BestData: React.FC<BestDataa> = (props) => {
 
           </ul>
         </div>
-    </div>
-
-
-
-
-
+      </div>
     </>
 
   )

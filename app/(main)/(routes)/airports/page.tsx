@@ -44,12 +44,12 @@ const Airport = () => {
     setisLoading(true);
     return airport;
   };
-  const SubmitButtonClicked=()=>{
+  const SubmitButtonClicked = () => {
     setResult(!result)
-    if(!result){
-      setButtonName('Clear Search'); 
-      
-    }else{
+    if (!result) {
+      setButtonName('Clear Search');
+
+    } else {
       setButtonName('Search Airport');
       setSelectedAirport(sampleJson)
     }
@@ -68,11 +68,10 @@ const Airport = () => {
 
       <div className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2 ">
         <div className="col-span-12 lg:col-span-10" >
-
           <Combobox title="Start Airport" onSelect={handleAirportSelect} />
         </div>
         <Button className="mt-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 col-span-12 lg:col-span-2 w-full" disabled={!isLoading} onClick={SubmitButtonClicked}>
-        {buttonName}
+          {buttonName}
         </Button>
       </div>
       <br />

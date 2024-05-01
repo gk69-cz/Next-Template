@@ -24,12 +24,12 @@ const Combobox: React.FC<ComboboxProps> = ({ title, onSelect }) => {
     const { value } = event.target;
     setSearchTerm(value);
     const filteredResults = airportsData.filter((airport) =>
-        airport.name.toLowerCase().includes(value.toLowerCase())
+      airport.name.toLowerCase().includes(value.toLowerCase())
     );
     setSearchResults(filteredResults);
-};
+  };
 
-  const handleSelectAirport = (airport:Airport) => {
+  const handleSelectAirport = (airport: Airport) => {
     setSelectedAirport(airport);
     setSearchTerm(airport.name);
     setSearchResults([]);
@@ -45,7 +45,7 @@ const Combobox: React.FC<ComboboxProps> = ({ title, onSelect }) => {
         onChange={handleChange}
         className="m-2 w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 md:m-0 "
       />
-     {searchResults.length > 0 && (
+      {searchResults.length > 0 && (
         <div className="absolute z-10 mt-1 w-full bg-white rounded-md shadow-lg max-h-36 overflow-y-auto">
           <ul className="py-1">
             {searchResults.map((airport) => (
@@ -58,14 +58,11 @@ const Combobox: React.FC<ComboboxProps> = ({ title, onSelect }) => {
               </li>
             ))}
           </ul>
-          
+
         </div>
       )}
     </div>
   );
 };
-
-
-
 
 export default Combobox

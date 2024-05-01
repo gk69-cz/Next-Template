@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 import { Menu } from 'lucide-react'
 import Sidebar from "@/components/component/sidebar";
-import { Sheet, SheetTrigger,SheetContent } from '../ui/sheet'
+import { Sheet, SheetTrigger, SheetContent } from '../ui/sheet'
 
 
 const NavigationMobile = () => {
@@ -11,9 +11,9 @@ const NavigationMobile = () => {
 
   useEffect(() => {
     setIsMounted(true);
-  },[]);
+  }, []);
 
-  if(!isMounted){
+  if (!isMounted) {
     return null;
   }
 
@@ -27,10 +27,10 @@ const NavigationMobile = () => {
         </div> {/* End of replacement */}
       </SheetTrigger>
       <SheetContent side='left' className='p-0'>
-        <Sidebar/>
+        <Sidebar />
       </SheetContent>
     </Sheet>
-  
+
 
   )
 }

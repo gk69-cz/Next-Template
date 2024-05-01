@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 
 interface modalProps {
-    title: string;
-    message: string;
-    onSelect: (modalResults:boolean ) => boolean;
-  }
+  title: string;
+  message: string;
+  onSelect: (modalResults: boolean) => boolean;
+}
 
-  const Popup: React.FC<modalProps> = ({title,message,onSelect}) => {
-    const onContinue = () => {
-      setModalResults(true);
-      onSelect(true);
-    };
-  
-    const onCancel = () => {
-      setModalResults(false);
-      onSelect(false);
-    };
-    
-const [modalResults,setModalResults] = useState(false)
+const Popup: React.FC<modalProps> = ({ title, message, onSelect }) => {
+  const onContinue = () => {
+    setModalResults(true);
+    onSelect(true);
+  };
+
+  const onCancel = () => {
+    setModalResults(false);
+    onSelect(false);
+  };
+
+  const [modalResults, setModalResults] = useState(false)
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center text-center">
       <div className="bg-white rounded-lg p-8">

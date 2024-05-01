@@ -70,7 +70,7 @@ const Routeone = () => {
       }
     } else {
       setShowModal(false);
-      setFlightName(''); 
+      setFlightName('');
       setButtonName("Locate");
     }
   }

@@ -240,7 +240,7 @@ const Bestofferes = () => {
             flagEnd={selectedAirportto.country}
             nameStart={selectedAirportfrom.name}
             timeStart='2:30'
-            dateStart= {moment(startdate).format('YYYY-MM-DD')}
+            dateStart={moment(startdate).format('YYYY-MM-DD')}
             nameEnd={selectedAirportto.name}
             timeEnd='5:40'
             dateEnd={moment(startdate).format('YYYY-MM-DD')}

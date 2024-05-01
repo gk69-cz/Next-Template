@@ -5,13 +5,13 @@ import React from 'react'
 const About = () => {
     return (
         <>
-        <Heading
-        title="About"
-        description='WHO, WHY, HOW'
-        icon={BookOpenText}
-        iconColor='text-blue-500'
-        bgColor='bg-blue-500/10'
-      />
+            <Heading
+                title="About"
+                description='WHO, WHY, HOW'
+                icon={BookOpenText}
+                iconColor='text-blue-500'
+                bgColor='bg-blue-500/10'
+            />
 
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-2 gap-8">
@@ -31,7 +31,7 @@ const About = () => {
 
                     <div>
                         <h2 className="text-xl font-semibold mb-4">Our Story</h2>
-                        <p className="text-gray-700 mb-6">Founded in [year of establishment], [Your Web Application Name] started as a [brief history or background of your project]. Since then, we have grown into [current status or achievements]. Our journey has been filled with challenges, learning experiences, and most importantly, the support of our incredible community.</p>
+                        <p className="text-gray-700 mb-6">Established in 2022, Airwise started as a humble Next.js project. Since then, we've expanded to include features like 404 pages, loaders, modals, popups, and API routes. We leverage AMADEUS for data retrieval.This journey has been marked by growth, challenges, and the invaluable support of our community. Explore our project and more on GitHub.</p>
 
                         <h2 className="text-xl font-semibold mb-4">Meet the Creator</h2>
                         <div className="grid grid-cols-2 gap-4">
